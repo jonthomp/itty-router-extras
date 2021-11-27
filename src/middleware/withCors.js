@@ -39,7 +39,8 @@ const withCors = (options = {}) => request => {
   })
 }
 
-const addCorsHeaders = request => response => {
+const addCorsHeaders = fn => (...args) => {
+  const response = fn(...args);
   let allowedOrigin = 'https://slick.af'
   const referer = request.headers.get('Referer')
 
